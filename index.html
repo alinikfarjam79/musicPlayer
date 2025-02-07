@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="./css/output.css">
+    <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
+
+
+    <style>
+        .swiper {
+            width: 100%;
+
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 280%;
+        }
+
+        .swiper-pagination {
+            /* color: wheat; */
+            width: 100px;
+            height: 100px;
+            /* background-color: black; */
+        }
+
+        .artist-container::-webkit-scrollbar,
+        .album-container::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .artist-container::-webkit-scrollbar-track,
+        .album-container::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 0.3rem rgb(79, 78, 78);
+            border-radius: 40px;
+        }
+
+        .artist-container::-webkit-scrollbar-thumb,
+        .album-container::-webkit-scrollbar-thumb {
+            box-shadow: inset 0 0 0.5rem rgb(116, 116, 116);
+            background-color: rgba(25, 43, 206, 0.2);
+            outline: none;
+            border-radius: 40px;
+        }
+
+        .ImgPlayer {
+            animation: spin 22s linear infinite;
+        }
+
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-[url('../img/bg.jpg')] bg-cover min-h-[100vh] flex justify-center items-center py-7">
+    <main
+        class="w-[90%] h-[2200px] md:h-[1200px] border-[1.7px] border-[rgba(255, 255, 255, 0.5)] shadow-[0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
+        0 1px 0 0 rgba(255, 255, 255, 0.6) inset, 0 4px 16px rgba(0, 0, 0, 0.12)] border-collapse rounded-2xl flex overflow-hidden backdrop-blur-[10px] bg-[rgba(16, 21, 61, 0.5)]">
+        <!-- menu -->
+        <section class="h-full w-[15%]  md:w-[8%] border-r">
+            <!-- items -->
+            <nav class="w-full h-[80%]  flex justify-center">
+                <ul class="mt-24 flex flex-col gap-6">
+                    <li class="py-3 px-6 cursor-pointer bg-[rgb(58,61,101)] rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="size-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
+                        </svg>
+                    </li>
+                    <li class="py-3 px-6 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="size-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                        </svg>
+
+                    </li>
+                    <li class="py-3 px-6 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="size-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                        </svg>
+
+                    </li>
+                    <li class="py-3 px-6 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="size-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                        </svg>
+
+                    </li>
+                    <li class="py-3 px-6 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="size-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                        </svg>
+
+                    </li>
+                </ul>
+            </nav>
+            <!-- login -->
+            <div class="w-full h-[20%] flex flex-col justify-center gap-6 items-center ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.3"
+                    stroke="currentColor" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.3"
+                    stroke="currentColor" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.3"
+                    stroke="currentColor" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                </svg>
+
+            </div>
+        </section>
+        <!-- content -->
+        <section class="w-[85%] md:w-[92%] items-start  flex flex-wrap">
+            <div class="w-[100%] h-fit md:h-full md:w-[69%] md:border-r  flex flex-col ">
+                <!-- popular playlist -->
+                <section class="flex flex-col p-2">
+                    <p class="text-white text-base md:text-2xl font-semibold ml-3 mt-3">Popular Playlist</p>
+                    <div class="swiper mySwiper mt-6">
+                        <div class="swiper-wrapper">
+                            <div
+                                class=" swiper-slide  bg-[url('../img/banner1.jpg')] relative bg-cover bg-center bg-no-repeat w-[380px] xl:w-[720px] xl:h-[300px] sm:w-[400px] lg:w-[450px] lg:h-[230px] sm:h-[250px] h-[210px] border border-[rgba(255, 255, 255, 0.1)] rounded-xl">
+                                <div class="flex flex-col gap-3 absolute bottom-2 md:bottom-6 md:left-6 left-2">
+                                    <p class=" text-2xl font-semibold text-white md:text-3xl xl:text-4xl">Smooth Jazz
+                                        Journey</p>
+                                    <div
+                                        class="flex gap-2 items-center border-[0.1px] w-fit p-2 rounded-md bg-[rgb(80,54,128)]">
+                                        <p class="text-white text-xs md:text-base xl:text-lg">LISTEN NOW</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="size-3 md:size-5 text-white">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class=" swiper-slide  bg-[url('../img/banner5.jpg')] relative bg-cover bg-center bg-no-repeat w-[280px] xl:w-[720px] xl:h-[300px] sm:w-[400px] lg:w-[450px] lg:h-[230px] sm:h-[250px] h-[210px] border border-[rgba(255, 255, 255, 0.1)] rounded-xl">
+                                <div class="flex flex-col gap-3 absolute bottom-2 md:bottom-6 md:left-6 left-2">
+                                    <p class=" text-2xl font-semibold text-white md:text-3xl xl:text-4xl">Relaxing Tones
+                                    </p>
+
+                                    <div
+                                        class="flex gap-2 items-center border-[0.1px] w-fit p-2 rounded-md bg-[rgb(80,54,128)]">
+                                        <p class="text-white text-xs md:text-base xl:text-lg">LISTEN NOW</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="size-3 md:size-5 text-white">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class=" swiper-slide  bg-[url('../img/banner2.jpg')] relative bg-cover bg-center bg-no-repeat w-[280px] xl:w-[720px] xl:h-[300px] sm:w-[400px] lg:w-[450px] lg:h-[230px] sm:h-[250px] h-[210px] border border-[rgba(255, 255, 255, 0.1)] rounded-xl">
+                                <div class="flex flex-col gap-3 absolute bottom-2 md:bottom-6 md:left-6 left-2">
+                                    <p class=" text-2xl font-semibold text-white md:text-3xl xl:text-4xl">Party Starters
+                                    </p>
+                                    <div
+                                        class="flex gap-2 items-center border-[0.1px] w-fit p-2 rounded-md bg-[rgb(80,54,128)]">
+                                        <p class="text-white text-xs md:text-base xl:text-lg">LISTEN NOW</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="size-3 md:size-5 text-white">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class=" swiper-slide  bg-[url('../img/banner4.jpg')] relative bg-cover bg-center bg-no-repeat w-[280px] xl:w-[720px] xl:h-[300px] sm:w-[400px] lg:w-[450px] lg:h-[230px] sm:h-[250px] h-[210px] border border-[rgba(255, 255, 255, 0.1)] rounded-xl">
+                                <div class="flex flex-col gap-3 absolute bottom-2 md:bottom-6 md:left-6 left-2">
+                                    <p class=" text-2xl font-semibold text-white md:text-3xl xl:text-4xl">Smooth Jazz
+                                        Journey</p>
+                                    <div
+                                        class="flex gap-2 items-center border-[0.1px] w-fit p-2 rounded-md bg-[rgb(80,54,128)]">
+                                        <p class="text-white text-xs md:text-base xl:text-lg">LISTEN NOW</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="size-3 md:size-5 text-white">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </section>
+                <!-- Featured music -->
+                <section class="flex w-full flex-col h-fit p-2 gap-4">
+                    <p class="text-white text-base md:text-2xl font-semibold ml-3 mt-3">Featured Music</p>
+                    <div id="FeaturedArtists" class="artist-container flex gap-6 w-full h-[212px] overflow-x-auto p-2">
+
+
+                    </div>
+                </section>
+
+                <!-- Recommended Songs -->
+                <section class="flex w-full flex-col h-fit p-2 gap-4 mt-14 ">
+                    <p class="text-white text-base md:text-2xl font-semibold ml-3 mt-3">Recommended Songs</p>
+                    <div id="RecommendedSongs"
+                        class="artist-container flex gap-6 w-full h-[200px] lg:h-[245px] overflow-x-auto p-2">
+                    </div>
+                </section>
+            </div>
+            <!-- my playlist -->
+            <div class="w-[100%]  md:w-[31%] flex flex-col items-center gap-6 ">
+                <p class="text-white text-2xl font-semibold mt-8">My PlayList</p>
+                <!--music list-->
+                <div id="MusicList" class="w-full flex flex-col items-center gap-3">
+
+
+
+                </div>
+                <!-- music player -->
+                <div
+                    class="w-[90%] h-[360px] flex flex-col bg-[rgb(51,50,99)] rounded-lg inset-shadow-sm inset-ring-2 border border-white inset-shadow-white items-center justify-center">
+                    <figure class="gap-2 flex flex-col items-center">
+                        <img src="img/ebi-goriz.jpg" id="ImgPlayer" class=" w-[138px] border rounded-full bg-cover"
+                            alt="">
+                        <figcaption class="flex flex-col items-center">
+                            <p id="audioNamePlayer" class="text-white text-xl">Goriz</p>
+                            <p id="ArtistNamePlayer" class="text-gray-400">Ebi</p>
+                        </figcaption>
+                    </figure>
+                    <div class="w-[85%]  flex justify-center items-center h-16">
+                        <div class="w-full relative h-1 bg-slate-400" id="bar">
+                            <input id="seek" type="range" min="0" value="0" max="100"
+                                class="absolute w-full top-[-6px] z-20 cursor-pointer left-[-1px] transition-all opacity-0">
+                            <div class="absolute bg-purple-400 h-full w-0 top-0" id="bar2"></div>
+                            <div id="dot"
+                                class=" -top-[3px] -left-[1px] absolute w-[10px] h-[10px] before:inset-shadow-sm before:inset-shadow-indigo-500 rounded-full transition-all bg-blue-400 before:z-10  before:content-[''] before:absolute before:w-[15px] before:h-[15px] before:rounded-full before:border before:border-blue-300 before:left-[-2.8px] before:top-[-2.3px]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-[85%] h-16 flex justify-evenly items-center">
+                        <div id="backIcon"
+                            class="bg-[rgb(140,133,189)] p-1 flex items-center justify-center rounded-full cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="size-7 pointer-events-none text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                            </svg>
+                        </div>
+                        <div id="playIcon"
+                            class="bg-[rgb(140,133,189)] p-2 flex items-center justify-center rounded-full cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-7 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                            </svg>
+
+
+                        </div>
+                        <div id="nextIcon"
+                            class="bg-[rgb(140,133,189)] p-1 flex items-center justify-center rounded-full cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="size-7 pointer-events-none text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script type="module" src="main.js"></script>
+
+</html>
